@@ -8,6 +8,10 @@ describe EagleTree::Log::File do
 
     it { should have(1).sessions }
 
+    its(:hardware) { should eql('73') }
+
+    its(:version) { should eql(6.93) }
+
   end
 
   it 'should raise on bad input' do

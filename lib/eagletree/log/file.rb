@@ -31,7 +31,7 @@ module EagleTree
           all_range = file.gets.chomp.split.map(&:to_i).map { |v| v * @meta[22].to_i }
 
           @sessions = []
-          session_count = @meta[21].to_i # XXX constant? for num_sessions
+          session_count = @meta[27].to_i
           session_count.times do |expected|
             num = /Session (?<num>\d)/.match(file.gets)[:num].to_i
             if (expected + 1) != num
@@ -62,6 +62,9 @@ module EagleTree
           session.rows = session_rows
 
         end
+
+        @hardware = @meta[23]
+        @version = @meta[25].to_f
 
       rescue
         raise ArgumentError, 'File does not appear to be an Eagle Tree log'
