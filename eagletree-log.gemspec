@@ -5,7 +5,7 @@ require 'eagletree/log/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "eagletree-log"
-  spec.version       = Eagletree::Log::VERSION
+  spec.version       = EagleTree::Log::VERSION
   spec.authors       = ["Nick Veys"]
   spec.email         = ["nick@codelever.com"]
   spec.description   = %q{Read and interpret Eagle Tree FDR log files.}

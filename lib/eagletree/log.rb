@@ -1,6 +1,6 @@
 require "eagletree/log/version"
 
-module Eagletree
+module EagleTree
   module Log
     # Your code goes here...
   end
