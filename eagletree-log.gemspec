@@ -7,9 +7,9 @@ Gem::Specification.new do |spec|
   spec.name          = "eagletree-log"
   spec.version       = Eagletree::Log::VERSION
   spec.authors       = ["Nick Veys"]
-  spec.email         = ["nickveys@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.email         = ["nick@codelever.com"]
+  spec.description   = %q{Read and interpret Eagle Tree FDR log files.}
+  spec.summary       = %q{Eagle Tree FDR log file reader}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -18,6 +18,8 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rake"
+  spec.add_development_dependency 'bundler', '~> 1.3'
+  spec.add_development_dependency 'ci_reporter', '= 1.8.4'
+  spec.add_development_dependency 'rake', '~> 0.8'
+  spec.add_development_dependency 'rspec', '~> 2.12'
 end
