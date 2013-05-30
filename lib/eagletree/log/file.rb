@@ -1,3 +1,5 @@
+require 'csv'
+
 module EagleTree
   module Log
 
@@ -26,24 +28,39 @@ module EagleTree
             raise RuntimeError, "No 'All Sessions' marker found"
           end
 
-          all_range = file.gets.chomp.split.map &:to_i
+          all_range = file.gets.chomp.split.map(&:to_i).map { |v| v * @meta[22].to_i }
 
           @sessions = []
-          session_count = @meta[21].to_i # XXX constant?
+          session_count = @meta[21].to_i # XXX constant? for num_sessions
           session_count.times do |expected|
             num = /Session (?<num>\d)/.match(file.gets)[:num].to_i
             if (expected + 1) != num
               raise RuntimeError, "Unexpected session marker encountered"
             end
 
-            range = file.gets.chomp.split.map &:to_i
-
+            range = file.gets.chomp.split.map(&:to_i).map { |v| v * @meta[22].to_i }
             @sessions << Session.new(num, range)
           end
 
           if all_range != [@sessions.first.range[0], @sessions.last.range[1]]
-            raise ArgumentError, 'File did not appear to contain all sessions'
+            raise RuntimeError, 'File did not appear to contain all sessions'
           end
+
+          session_index = 0
+          session = @sessions[session_index]
+          session_rows = []
+          CSV.new(file, { :col_sep => ' ', :headers => true }).each do |csv|
+            if !((session.range[0]..session.range[1]).include? csv[0].to_i)
+              session.rows = session_rows
+              session_index += 1
+              session = @sessions[session_index]
+              session_rows = []
+            end
+
+            session_rows << csv
+          end
+          session.rows = session_rows
+
         end
 
       rescue
