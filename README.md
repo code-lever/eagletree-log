@@ -5,6 +5,7 @@ TODO: Write a gem description
 Research:
 
 * http://www.eagletreesystems.com/Support/Manuals/Pro,%20Glide,%20Flight%20and%20Boat%20Seagull%20and%20Data%20Recorder%20Instruction%20Manual.pdf
+* http://www.eagletreesystems.com/Support/Manuals/Car%20Data%20Recorder%20Instruction%20Manual.pdf
 * http://diydrones.com/profiles/blogs/eagletree-fdr-file-format
 
 ## Installation
