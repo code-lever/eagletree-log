@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = EagleTree::Log::VERSION
   spec.authors       = ["Nick Veys"]
   spec.email         = ["nick@codelever.com"]
-  spec.description   = %q{Read and interpret Eagle Tree FDR log files.}
-  spec.summary       = %q{Eagle Tree FDR log file reader}
+  spec.description   = %q{Read and interpret Eagle Tree telemetry log files.}
+  spec.summary       = %q{Eagle Tree telemetry log file reader}
   spec.homepage      = ""
   spec.license       = "MIT"
 
