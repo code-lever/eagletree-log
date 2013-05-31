@@ -34,7 +34,7 @@ module EagleTree
       end
 
       def altitudes?
-        self.altitudes.any? { |alt| alt > 0.0 }
+        nonzero?(self.altitudes)
       end
 
       def airspeeds
@@ -42,7 +42,7 @@ module EagleTree
       end
 
       def airspeeds?
-        self.airspeeds.any? { |as| as > 0.0 }
+        nonzero?(self.airspeeds)
       end
 
       def servo_currents
@@ -50,15 +50,7 @@ module EagleTree
       end
 
       def servo_currents?
-        self.servo_currents.any? { |c| c > 0.0 }
-      end
-
-      def pack_voltages
-        @pack_voltages ||= float_fields('PackVolt*100', 100.0)
-      end
-
-      def pack_voltages?
-        self.pack_voltages.any? { |v| v > 0.0 }
+        nonzero?(self.servo_currents)
       end
 
       def throttles
@@ -66,10 +58,70 @@ module EagleTree
       end
 
       def throttles?
-        self.throttles.any? { |th| th > 0.0 }
+        nonzero?(self.throttles)
+      end
+
+      def pack_voltages
+        @pack_voltages ||= float_fields('PackVolt*100', 100.0)
+      end
+
+      def pack_voltages?
+        nonzero?(self.pack_voltages)
+      end
+
+      def amps
+        @amps ||= float_fields('Amps*100', 100.0)
+      end
+
+      def amps?
+        nonzero?(self.amps)
+      end
+
+      def temps1
+        @temps1 ||= float_fields('Temp1*10', 10.0)
+      end
+
+      def temps1?
+        nonzero?(self.temps1)
+      end
+
+      def temps2
+        @temps2 ||= float_fields('Temp2*10', 10.0)
+      end
+
+      def temps2?
+        nonzero?(self.temps2)
+      end
+
+      def temps3
+        @temps3 ||= float_fields('Temp3*10', 10.0)
+      end
+
+      def temps3?
+        nonzero?(self.temps3)
+      end
+
+      def rpms
+        @rpms ||= int_fields('RPM')
+      end
+
+      def rpms?
+        nonzero?(self.rpms)
+      end
+
+      def rpms2
+        @rpms2 ||= int_fields('RPM2')
+      end
+
+      def rpms2?
+        nonzero?(self.rpms2)
       end
 
       private
+
+      def nonzero? array
+        !array.all?(&:zero?)
+      end
 
       def int_fields name
         fields(name).map(&:to_i)

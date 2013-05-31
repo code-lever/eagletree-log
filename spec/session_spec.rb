@@ -16,9 +16,35 @@ describe EagleTree::Log::Session do
 
     its(:servo_currents?) { should be_false }
 
+    its(:throttles?) { should be_false }
+
     its(:pack_voltages?) { should be_true }
 
-    its(:throttles?) { should be_false }
+    it 'should have a few select pack voltages' do
+      subject.pack_voltages[0].should be_within(0.1).of(46.5)
+      subject.pack_voltages[100].should be_within(0.1).of(46.5)
+      subject.pack_voltages[250].should be_within(0.1).of(42.8)
+      subject.pack_voltages[500].should be_within(0.1).of(45.2)
+    end
+
+    its(:amps?) { should be_true }
+
+    it 'should have a few select amps' do
+      subject.amps[0].should be_within(0.01).of(0.18)
+      subject.amps[100].should be_within(0.01).of(0.31)
+      subject.amps[250].should be_within(0.01).of(19.40)
+      subject.amps[500].should be_within(0.01).of(0.12)
+    end
+
+    its(:temps1?) { should be_false }
+
+    its(:temps2?) { should be_false }
+
+    its(:temps3?) { should be_false }
+
+    its(:rpms?) { should be_true }
+
+    its(:rpms2?) { should be_false }
 
   end
 
