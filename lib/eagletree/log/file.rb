@@ -19,24 +19,24 @@ module EagleTree
       attr_reader :version
 
       def initialize uri
+        @sessions = []
 
         open(uri, 'rb') do |file|
           @name = file.gets.chomp
           @meta = file.gets.chomp.split
+          session_count = @meta[27].to_i
 
           if 'All Sessions' != file.gets.chomp
             raise RuntimeError, "No 'All Sessions' marker found"
           end
 
-          all_sessions_range = file.gets.chomp.split.map(&:to_i)
-
-          @sessions = []
-          session_count = @meta[27].to_i
-
           # empty files are still valid, just have no sessions
           if session_count.zero?
             break
           end
+
+          # read off the full file range
+          all_sessions_range = file.gets.chomp.split.map(&:to_i)
 
           session_count.times do |expected|
             num = /Session (?<num>\d)/.match(file.gets)[:num].to_i
