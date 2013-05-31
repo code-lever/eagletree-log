@@ -44,19 +44,19 @@ describe EagleTree::Log::File do
 
   end
 
-  #context 'data file multi-session-2.fdr' do
-  #
-  #  subject { EagleTree::Log::File.new(data_file('multi-session-2.fdr')) }
-  #
-  #  it { should have(3).sessions }
-  #
-  #  its(:name) { should eql('Losi XXX4') }
-  #
-  #  its(:hardware) { should eql('71') }
-  #
-  #  its(:version) { should eql(6.02) }
-  #
-  #end
+  context 'data file multi-session-2.fdr' do
+
+    subject { EagleTree::Log::File.new(data_file('multi-session-2.fdr')) }
+
+    it { should have(3).sessions }
+
+    its(:name) { should eql('Losi XXX4') }
+
+    its(:hardware) { should eql('71') }
+
+    its(:version) { should eql(6.02) }
+
+  end
 
   context 'data file t600-1.fdr' do
 

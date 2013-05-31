@@ -28,7 +28,7 @@ module EagleTree
             raise RuntimeError, "No 'All Sessions' marker found"
           end
 
-          all_range = file.gets.chomp.split.map(&:to_i).map { |v| v * @meta[22].to_i }
+          all_sessions_range = file.gets.chomp.split.map(&:to_i)
 
           @sessions = []
           session_count = @meta[27].to_i
@@ -48,15 +48,11 @@ module EagleTree
             @sessions << Session.new(num, range)
           end
 
-          if all_range != [@sessions.first.range[0], @sessions.last.range[1]]
-            raise RuntimeError, 'File did not appear to contain all sessions'
-          end
-
           session_index = 0
           session = @sessions[session_index]
           session_rows = []
           CSV.new(file, { :col_sep => ' ', :headers => true }).each do |csv|
-            if !((session.range[0]..session.range[1]).include? csv[0].to_i)
+            if !((session.range[0]..(session.range[1]-1)).include? csv[0].to_i)
               session.rows = session_rows
               session_index += 1
               session = @sessions[session_index]
@@ -65,15 +61,15 @@ module EagleTree
 
             session_rows << csv
           end
-          session.rows = session_rows
+          session.rows = session_rows unless session.nil?
 
         end
 
         @hardware = @meta[23] # TODO interpret correctly
         @version = @meta[25].to_f
 
-      rescue
-        raise ArgumentError, 'File does not appear to be an Eagle Tree log'
+      #rescue
+      #  raise ArgumentError, 'File does not appear to be an Eagle Tree log'
       end
 
     end
