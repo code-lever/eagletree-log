@@ -32,6 +32,12 @@ module EagleTree
 
           @sessions = []
           session_count = @meta[27].to_i
+
+          # empty files are still valid, just have no sessions
+          if session_count.zero?
+            break
+          end
+
           session_count.times do |expected|
             num = /Session (?<num>\d)/.match(file.gets)[:num].to_i
             if (expected + 1) != num
