@@ -2,6 +2,86 @@ require 'spec_helper'
 
 describe EagleTree::Log::Session do
 
+  context 'data file multi-session-1.fdr' do
+
+    let(:file) { EagleTree::Log::File.new(data_file('multi-session-1.fdr')) }
+
+    subject { file }
+
+    it { should have(3).sessions }
+
+    context 'session 1' do
+
+      subject { file.sessions[0] }
+
+      it { should have(3555).rows }
+
+      its(:duration) { should be_within(0.1).of(355.5) }
+
+    end
+
+    context 'session 2' do
+
+      subject { file.sessions[1] }
+
+      it { should have(3699).rows }
+
+      its(:duration) { should be_within(0.1).of(369.9) }
+
+    end
+
+    context 'session 3' do
+
+      subject { file.sessions[2] }
+
+      it { should have(4241).rows }
+
+      its(:duration) { should be_within(0.1).of(424.0) }
+
+    end
+
+  end
+
+  context 'data file multi-session-2.fdr' do
+
+    let(:file) { EagleTree::Log::File.new(data_file('multi-session-2.fdr')) }
+
+    subject { file }
+
+    it { should have(3).sessions }
+
+    context 'session 1' do
+
+      subject { file.sessions[0] }
+
+      it { should have(226).rows }
+
+      its(:duration) { should be_within(0.1).of(22.6) }
+
+    end
+
+    context 'session 2' do
+
+      subject { file.sessions[1] }
+
+      it { should have(124).rows }
+
+      its(:duration) { should be_within(0.1).of(12.4) }
+
+    end
+
+    context 'session 3' do
+
+      subject { file.sessions[2] }
+
+      it { should have(6336).rows }
+
+      its(:duration) { should be_within(0.1).of(633.5) }
+
+    end
+
+  end
+
   context 'data file t600-1.fdr' do
 
     subject { EagleTree::Log::File.new(data_file('t600-1.fdr')).sessions[0] }
