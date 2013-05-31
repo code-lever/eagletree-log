@@ -10,6 +10,16 @@ describe EagleTree::Log::Session do
 
     its(:duration) { should eql(69.2) }
 
+    its(:altitudes?) { should be_false }
+
+    its(:airspeeds?) { should be_false }
+
+    its(:servo_currents?) { should be_false }
+
+    its(:pack_voltages?) { should be_true }
+
+    its(:throttles?) { should be_false }
+
   end
 
 end
