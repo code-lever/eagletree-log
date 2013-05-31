@@ -8,6 +8,8 @@ describe EagleTree::Log::Session do
 
     it { should have(692).rows }
 
+    its(:duration) { should eql(69.2) }
+
   end
 
 end

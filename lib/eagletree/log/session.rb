@@ -22,6 +22,13 @@ module EagleTree
         @rows = rows
       end
 
+      # Gets the duration of the flight, in seconds.
+      #
+      # @return [Float] duration of the flight, in seconds
+      def duration
+        @duration ||= (range[1] - range[0]) / 1000.0
+      end
+
     end
 
   end
