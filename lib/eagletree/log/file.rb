@@ -63,7 +63,7 @@ module EagleTree
 
         end
 
-        @hardware = @meta[23]
+        @hardware = @meta[23] # TODO interpret correctly
         @version = @meta[25].to_f
 
       rescue
