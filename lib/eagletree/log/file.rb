@@ -23,11 +23,11 @@ module EagleTree
         @sessions = []
 
         open(uri, 'rb') do |file|
-          @name = file.gets.chomp
-          @meta = file.gets.chomp.split
+          @name = file.gets.strip
+          @meta = file.gets.strip.split
           session_count = @meta[27].to_i
 
-          if 'All Sessions' != file.gets.chomp
+          if 'All Sessions' != file.gets.strip
             raise RuntimeError, "No 'All Sessions' marker found"
           end
 
@@ -37,7 +37,7 @@ module EagleTree
           end
 
           # read off the full file range
-          all_sessions_range = file.gets.chomp.split.map(&:to_i)
+          all_sessions_range = file.gets.strip.split.map(&:to_i)
 
           session_count.times do |expected|
             num = /Session (?<num>\d)/.match(file.gets)[:num].to_i
@@ -45,7 +45,7 @@ module EagleTree
               raise RuntimeError, "Unexpected session marker encountered"
             end
 
-            range = file.gets.chomp.split.map(&:to_i).map { |v| v * @meta[22].to_i }
+            range = file.gets.strip.split.map(&:to_i).map { |v| v * @meta[22].to_i }
             @sessions << Session.new(num, range)
           end
 
