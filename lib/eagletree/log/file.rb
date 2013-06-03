@@ -69,8 +69,8 @@ module EagleTree
         @hardware = @meta[23] # TODO interpret correctly
         @version = @meta[25].to_f
 
-      #rescue
-      #  raise ArgumentError, 'File does not appear to be an Eagle Tree log'
+      rescue
+        raise ArgumentError, 'File does not appear to be an Eagle Tree log'
       end
 
     end
