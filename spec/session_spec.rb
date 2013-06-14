@@ -48,19 +48,21 @@ describe EagleTree::Log::Session do
       its(:coords) { should be_true }
 
       it 'should have a few select coords' do
-        subject.coords[0][0].should be_within(0.0001).of(49.0775)
-        subject.coords[0][1].should be_within(0.0001).of(2.1545)
+        subject.coords[0][0].should be_within(0.0001).of(2.1545)
+        subject.coords[0][1].should be_within(0.0001).of(49.0775)
         subject.coords[0][2].should be_within(0.1).of(102.0)
-        subject.coords[500][0].should be_within(0.0001).of(49.0775)
-        subject.coords[500][1].should be_within(0.0001).of(2.1545)
+        subject.coords[500][0].should be_within(0.0001).of(2.1545)
+        subject.coords[500][1].should be_within(0.0001).of(49.0775)
         subject.coords[500][2].should be_within(0.1).of(75.0)
-        subject.coords[1500][0].should be_within(0.0001).of(49.0780)
-        subject.coords[1500][1].should be_within(0.0001).of(2.1531)
+        subject.coords[1500][0].should be_within(0.0001).of(2.1531)
+        subject.coords[1500][1].should be_within(0.0001).of(49.0780)
         subject.coords[1500][2].should be_within(0.1).of(121.0)
-        subject.coords[2500][0].should be_within(0.0001).of(49.0778)
-        subject.coords[2500][1].should be_within(0.0001).of(2.1542)
+        subject.coords[2500][0].should be_within(0.0001).of(2.1542)
+        subject.coords[2500][1].should be_within(0.0001).of(49.0778)
         subject.coords[2500][2].should be_within(0.1).of(89.0)
       end
+
+      its(:to_kml) { should_not be_nil }
 
     end
 
@@ -87,6 +89,8 @@ describe EagleTree::Log::Session do
       its(:longitudes?) { should be_false }
 
       its(:gps_altitudes?) { should be_false }
+
+      specify { expect { subject.to_kml }.to raise_error(RuntimeError) }
 
     end
 
@@ -259,6 +263,8 @@ describe EagleTree::Log::Session do
     its(:longitudes?) { should be_false }
 
     its(:gps_altitudes?) { should be_false }
+
+    specify { expect { subject.to_kml }.to raise_error(RuntimeError) }
 
   end
 

@@ -1,3 +1,5 @@
+require 'ruby_kml'
+
 module EagleTree
   module Log
 
@@ -142,15 +144,44 @@ module EagleTree
       end
 
       def coords
-        @coords ||= latitudes.zip(longitudes, gps_altitudes)
+        @coords ||= longitudes.zip(latitudes, gps_altitudes)
       end
 
       def coords?
-        self.latitudes? || self.longitudes? || self.gps_altitudes?
+        self.longitudes? || self.latitudes? || self.gps_altitudes?
       end
 
       def to_kml
+        unless coords?
+          raise RuntimeError, 'No coordinates available for KML path generation'
+        end
 
+        kml = KMLFile.new
+        kml.objects << KML::Document.new(
+            :name => 'NAME HERE',
+            :description => 'DESCRIPTION HERE',
+            :styles => [
+                KML::Style.new(
+                    :id => 'yellowLineGreenPoly',
+                    :line_style => KML::LineStyle.new(:color => '7f00ffff', :width => 4),
+                    :poly_style => KML::PolyStyle.new(:color => '7f00ff00')
+                )
+            ],
+            :features => [
+                KML::Placemark.new(
+                    :name => 'Absolute Extruded',
+                    :description => 'Transparent green wall with yellow outlines',
+                    :style_url => '#yellowLineGreenPoly',
+                    :geometry => KML::LineString.new(
+                        :extrude => true,
+                        :tessellate => true,
+                        :altitude_mode => 'absolute',
+                        :coordinates => coords.map { |c| c.join(',') }.join(' ')
+                    )
+                )
+            ]
+        )
+        kml.render
       end
 
       private
