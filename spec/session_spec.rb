@@ -2,6 +2,53 @@ require 'spec_helper'
 
 describe EagleTree::Log::Session do
 
+  context 'data file funjet-gps.fdr' do
+
+    let(:file) { EagleTree::Log::File.new(data_file('funjet-gps.fdr')) }
+
+    subject { file }
+
+    it { should have(1).sessions }
+
+    context 'session 1' do
+
+      subject { file.sessions[0] }
+
+      it { should have(2929).rows }
+
+      its(:duration) { should be_within(0.1).of(732.3) }
+
+      its(:latitudes?) { should be_true }
+
+      it 'should have a few select latitudes' do
+        subject.latitudes[0].should be_within(0.0001).of(49.0775)
+        subject.latitudes[1242].should be_within(0.0001).of(49.0793)
+        subject.latitudes[1666].should be_within(0.0001).of(49.0750)
+        subject.latitudes[2077].should be_within(0.0001).of(49.0771)
+      end
+
+      its(:longitudes?) { should be_true }
+
+      it 'should have a few select longitudes' do
+        subject.longitudes[0].should be_within(0.0001).of(2.1545)
+        subject.longitudes[1356].should be_within(0.0001).of(2.1530)
+        subject.longitudes[1727].should be_within(0.0001).of(2.1560)
+        subject.longitudes[2317].should be_within(0.0001).of(2.1519)
+      end
+
+      its(:gps_altitudes?) { should be_true }
+
+      it 'should have a few select gps_altitudes' do
+        subject.gps_altitudes[864].should be_within(0.1).of(75.0)
+        subject.gps_altitudes[1566].should be_within(0.1).of(208.0)
+        subject.gps_altitudes[1879].should be_within(0.1).of(99.0)
+        subject.gps_altitudes[2317].should be_within(0.1).of(168.0)
+      end
+
+    end
+
+  end
+
   context 'data file multi-session-1.fdr' do
 
     let(:file) { EagleTree::Log::File.new(data_file('multi-session-1.fdr')) }
@@ -17,6 +64,12 @@ describe EagleTree::Log::Session do
       it { should have(3555).rows }
 
       its(:duration) { should be_within(0.1).of(355.5) }
+
+      its(:latitudes?) { should be_false }
+
+      its(:longitudes?) { should be_false }
+
+      its(:gps_altitudes?) { should be_false }
 
     end
 
@@ -57,6 +110,12 @@ describe EagleTree::Log::Session do
       it { should have(226).rows }
 
       its(:duration) { should be_within(0.1).of(22.6) }
+
+      its(:latitudes?) { should be_false }
+
+      its(:longitudes?) { should be_false }
+
+      its(:gps_altitudes?) { should be_false }
 
     end
 
@@ -126,6 +185,12 @@ describe EagleTree::Log::Session do
 
     its(:rpms2?) { should be_false }
 
+    its(:latitudes?) { should be_false }
+
+    its(:longitudes?) { should be_false }
+
+    its(:gps_altitudes?) { should be_false }
+
   end
 
   context 'data file t600-2.fdr' do
@@ -171,6 +236,12 @@ describe EagleTree::Log::Session do
     its(:rpms?) { should be_true }
 
     its(:rpms2?) { should be_false }
+
+    its(:latitudes?) { should be_false }
+
+    its(:longitudes?) { should be_false }
+
+    its(:gps_altitudes?) { should be_false }
 
   end
 

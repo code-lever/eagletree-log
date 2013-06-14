@@ -46,7 +46,7 @@ module EagleTree
       end
 
       def servo_currents
-        @servo_currents ||= float_fields('ServoCurrent*100', 100.0)
+        @servo_currents ||= float_fields('ServoCurrent*100').map { |val| val / 100.0 }
       end
 
       def servo_currents?
@@ -62,7 +62,7 @@ module EagleTree
       end
 
       def pack_voltages
-        @pack_voltages ||= float_fields('PackVolt*100', 100.0)
+        @pack_voltages ||= float_fields('PackVolt*100').map { |val| val / 100.0 }
       end
 
       def pack_voltages?
@@ -70,7 +70,7 @@ module EagleTree
       end
 
       def amps
-        @amps ||= float_fields('Amps*100', 100.0)
+        @amps ||= float_fields('Amps*100').map { |val| val / 100.0 }
       end
 
       def amps?
@@ -78,7 +78,7 @@ module EagleTree
       end
 
       def temps1
-        @temps1 ||= float_fields('Temp1*10', 10.0)
+        @temps1 ||= float_fields('Temp1*10').map { |val| val / 10.0 }
       end
 
       def temps1?
@@ -86,7 +86,7 @@ module EagleTree
       end
 
       def temps2
-        @temps2 ||= float_fields('Temp2*10', 10.0)
+        @temps2 ||= float_fields('Temp2*10').map { |val| val / 10.0 }
       end
 
       def temps2?
@@ -94,7 +94,7 @@ module EagleTree
       end
 
       def temps3
-        @temps3 ||= float_fields('Temp3*10', 10.0)
+        @temps3 ||= float_fields('Temp3*10').map { |val| val / 10.0 }
       end
 
       def temps3?
@@ -117,6 +117,42 @@ module EagleTree
         nonzero?(self.rpms2)
       end
 
+      def latitudes
+        @latitudes ||= float_fields('GPSLat')
+      end
+
+      def latitudes?
+        nonzero?(self.latitudes)
+      end
+
+      def longitudes
+        @longitudes ||= float_fields('GPSLon')
+      end
+
+      def longitudes?
+        nonzero?(self.longitudes)
+      end
+
+      def gps_altitudes
+        @gps_altitudes ||= float_fields('GPSAlt')
+      end
+
+      def gps_altitudes?
+        nonzero?(self.gps_altitudes)
+      end
+
+      def coords
+        self.latitudes.zip(self.longitudes)
+      end
+
+      def coords?
+        self.latitudes? || self.longitudes?
+      end
+
+      def to_kml
+
+      end
+
       private
 
       def nonzero? array
@@ -127,8 +163,8 @@ module EagleTree
         fields(name).map(&:to_i)
       end
 
-      def float_fields name, divisor
-        fields(name).map(&:to_f).map { |val| val / divisor }
+      def float_fields name
+        fields(name).map(&:to_f)
       end
 
       def fields name
