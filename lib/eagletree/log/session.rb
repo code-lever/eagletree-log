@@ -142,11 +142,11 @@ module EagleTree
       end
 
       def coords
-        self.latitudes.zip(self.longitudes)
+        @coords ||= latitudes.zip(longitudes, gps_altitudes)
       end
 
       def coords?
-        self.latitudes? || self.longitudes?
+        self.latitudes? || self.longitudes? || self.gps_altitudes?
       end
 
       def to_kml
