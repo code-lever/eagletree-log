@@ -151,8 +151,12 @@ module EagleTree
         self.longitudes? || self.latitudes? || self.gps_altitudes?
       end
 
+      def to_kml?
+        coords?
+      end
+
       def to_kml
-        unless coords?
+        unless to_kml?
           raise RuntimeError, 'No coordinates available for KML path generation'
         end
 

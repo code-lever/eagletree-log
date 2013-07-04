@@ -62,6 +62,8 @@ describe EagleTree::Log::Session do
         subject.coords[2500][2].should be_within(0.1).of(89.0)
       end
 
+      its(:to_kml?) { should be_true }
+
       its(:to_kml) { should_not be_nil }
 
     end
