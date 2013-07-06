@@ -19,6 +19,16 @@ module EagleTree
       # @return [FixNum] Version of the data recorder software
       attr_reader :version
 
+      # Determines if the file at the given URI is a EagleTree log file.  If one intends
+      # to read the file, simply using #new should be preferred in favor of this, catching any
+      # errors that may be raised.
+      #
+      # @param uri URI to file to read
+      # @return [Boolean] true if the file is a EagleTree log file, false otherwise
+      def self.eagle_tree? uri
+        !!File.new(uri) rescue false
+      end
+
       def initialize uri
         @sessions = []
 
