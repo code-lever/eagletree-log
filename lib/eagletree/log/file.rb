@@ -83,6 +83,13 @@ module EagleTree
         raise ArgumentError, 'File does not appear to be an Eagle Tree log'
       end
 
+      # Gets the total duration of all sessions contained within.
+      #
+      # @return [Float] total duration of all sessions, in seconds
+      def duration
+        @sessions.map(&:duration).reduce(&:+)
+      end
+
       # Determines if KML methods can be called for this file.
       #
       # @return [Boolean] true if KML can be generated for this file, false otherwise

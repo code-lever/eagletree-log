@@ -24,6 +24,8 @@ describe EagleTree::Log::File do
 
       it { should have(1).sessions }
 
+      its(:duration) { should be_within(0.1).of(732.3) }
+
       its(:name) { should eql('FunJet') }
 
       its(:hardware) { should eql('73') }
@@ -37,6 +39,8 @@ describe EagleTree::Log::File do
       subject { EagleTree::Log::File.new(data_file('multi-session-1.fdr')) }
 
       it { should have(3).sessions }
+
+      its(:duration) { should be_within(0.1).of(1149.3) }
 
       its(:name) { should eql('Helis') }
 
