@@ -270,4 +270,82 @@ describe EagleTree::Log::Session do
 
   end
 
+  describe '#to_kml' do
+
+    subject { file.sessions[0] }
+
+    context 'with GPS data' do
+
+      let(:file) { EagleTree::Log::File.new(data_file('funjet-gps.fdr')) }
+
+      its(:to_kml) { should be_a(String) }
+
+    end
+
+    context 'without GPS data' do
+
+      let(:file) { EagleTree::Log::File.new(data_file('old-2.fdr')) }
+
+      it 'should raise w/o kml data' do
+        expect { subject.to_kml }.to raise_error
+      end
+
+    end
+
+  end
+
+  describe '#to_kml_file' do
+
+    subject { file.sessions[0] }
+
+    context 'with GPS data' do
+
+      let(:file) { EagleTree::Log::File.new(data_file('funjet-gps.fdr')) }
+
+      its(:to_kml_file) { should be_a(KMLFile) }
+
+      it 'should take options for file and placemark' do
+        kml = subject.to_kml_file({ :name => 'File Name' }, { :name => 'Placemark Name' })
+        kml.objects[0].name.should eql('File Name')
+        kml.objects[0].features[0].name.should eql('Placemark Name')
+      end
+
+    end
+
+    context 'without GPS data' do
+
+      let(:file) { EagleTree::Log::File.new(data_file('old-2.fdr')) }
+
+      it 'should raise w/o kml data' do
+        expect { subject.to_kml_file }.to raise_error
+      end
+
+    end
+
+  end
+
+  describe '#to_kml_placemark' do
+
+    subject { file.sessions[0] }
+
+    context 'with GPS data' do
+
+      let(:file) { EagleTree::Log::File.new(data_file('funjet-gps.fdr')) }
+
+      its(:to_kml_placemark) { should be_a(KML::Placemark) }
+
+    end
+
+    context 'without GPS data' do
+
+      let(:file) { EagleTree::Log::File.new(data_file('old-2.fdr')) }
+
+      it 'should raise w/o kml data' do
+        expect { subject.to_kml_placemark }.to raise_error
+      end
+
+    end
+
+  end
+
 end
