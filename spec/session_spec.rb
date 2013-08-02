@@ -18,6 +18,15 @@ describe EagleTree::Log::Session do
 
       its(:duration) { should be_within(0.1).of(732.3) }
 
+      its(:milliseconds?) { should be_true }
+
+      it 'should have a few select milliseconds' do
+        subject.milliseconds[0].should eql(0)
+        subject.milliseconds[125].should eql(31250)
+        subject.milliseconds[250].should eql(62500)
+        subject.milliseconds[2230].should eql(557500)
+      end
+
       its(:latitudes?) { should be_true }
 
       it 'should have a few select latitudes' do
@@ -86,6 +95,15 @@ describe EagleTree::Log::Session do
 
       its(:duration) { should be_within(0.1).of(355.5) }
 
+      its(:milliseconds?) { should be_true }
+
+      it 'should have a few select milliseconds' do
+        subject.milliseconds[0].should eql(0)
+        subject.milliseconds[125].should eql(12500)
+        subject.milliseconds[250].should eql(25000)
+        subject.milliseconds[2230].should eql(223000)
+      end
+
       its(:latitudes?) { should be_false }
 
       its(:longitudes?) { should be_false }
@@ -103,6 +121,15 @@ describe EagleTree::Log::Session do
       it { should have(3699).rows }
 
       its(:duration) { should be_within(0.1).of(369.9) }
+
+      its(:milliseconds?) { should be_true }
+
+      it 'should have a few select milliseconds' do
+        subject.milliseconds[0].should eql(355500)
+        subject.milliseconds[125].should eql(368000)
+        subject.milliseconds[250].should eql(380500)
+        subject.milliseconds[2230].should eql(578500)
+      end
 
     end
 

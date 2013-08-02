@@ -31,6 +31,14 @@ module EagleTree
         @duration ||= (range[1] - range[0]) / 1000.0
       end
 
+      def milliseconds
+        @altitudes ||= int_fields('Milliseconds')
+      end
+
+      def milliseconds?
+        nonzero?(self.milliseconds)
+      end
+
       def altitudes
         @altitudes ||= int_fields('Altitude')
       end
