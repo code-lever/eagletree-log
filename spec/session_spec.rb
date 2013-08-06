@@ -60,15 +60,19 @@ describe EagleTree::Log::Session do
         subject.coords[0][0].should be_within(0.0001).of(2.1545)
         subject.coords[0][1].should be_within(0.0001).of(49.0775)
         subject.coords[0][2].should be_within(0.1).of(102.0)
+        subject.coords[0][3].should be_within(0.1).of(0.0)
         subject.coords[500][0].should be_within(0.0001).of(2.1545)
         subject.coords[500][1].should be_within(0.0001).of(49.0775)
         subject.coords[500][2].should be_within(0.1).of(75.0)
+        subject.coords[500][3].should be_within(0.1).of(175.7)
         subject.coords[1500][0].should be_within(0.0001).of(2.1531)
         subject.coords[1500][1].should be_within(0.0001).of(49.0780)
         subject.coords[1500][2].should be_within(0.1).of(121.0)
+        subject.coords[1500][3].should be_within(0.1).of(35.1)
         subject.coords[2500][0].should be_within(0.0001).of(2.1542)
         subject.coords[2500][1].should be_within(0.0001).of(49.0778)
         subject.coords[2500][2].should be_within(0.1).of(89.0)
+        subject.coords[2500][3].should be_within(0.1).of(8.6)
       end
 
       its(:gps_speeds?) { should be_true }

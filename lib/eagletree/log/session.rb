@@ -184,11 +184,11 @@ module EagleTree
       end
 
       def coords
-        @coords ||= longitudes.zip(latitudes, gps_altitudes)
+        @coords ||= longitudes.zip(latitudes, gps_altitudes, gps_courses)
       end
 
       def coords?
-        longitudes? || latitudes? || gps_altitudes?
+        longitudes? || latitudes? || gps_altitudes? || gps_courses?
       end
 
       # Determines if KML methods can be called for this session.
