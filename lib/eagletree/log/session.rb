@@ -36,7 +36,7 @@ module EagleTree
       end
 
       def milliseconds?
-        nonzero?(self.milliseconds)
+        nonzero?(milliseconds)
       end
 
       def altitudes
@@ -44,7 +44,7 @@ module EagleTree
       end
 
       def altitudes?
-        nonzero?(self.altitudes)
+        nonzero?(altitudes)
       end
 
       def airspeeds
@@ -52,7 +52,7 @@ module EagleTree
       end
 
       def airspeeds?
-        nonzero?(self.airspeeds)
+        nonzero?(airspeeds)
       end
 
       def servo_currents
@@ -60,7 +60,7 @@ module EagleTree
       end
 
       def servo_currents?
-        nonzero?(self.servo_currents)
+        nonzero?(servo_currents)
       end
 
       def throttles
@@ -68,7 +68,7 @@ module EagleTree
       end
 
       def throttles?
-        nonzero?(self.throttles)
+        nonzero?(throttles)
       end
 
       def pack_voltages
@@ -76,7 +76,7 @@ module EagleTree
       end
 
       def pack_voltages?
-        nonzero?(self.pack_voltages)
+        nonzero?(pack_voltages)
       end
 
       def amps
@@ -84,7 +84,7 @@ module EagleTree
       end
 
       def amps?
-        nonzero?(self.amps)
+        nonzero?(amps)
       end
 
       def temps1
@@ -92,7 +92,7 @@ module EagleTree
       end
 
       def temps1?
-        nonzero?(self.temps1)
+        nonzero?(temps1)
       end
 
       def temps2
@@ -100,7 +100,7 @@ module EagleTree
       end
 
       def temps2?
-        nonzero?(self.temps2)
+        nonzero?(temps2)
       end
 
       def temps3
@@ -108,7 +108,7 @@ module EagleTree
       end
 
       def temps3?
-        nonzero?(self.temps3)
+        nonzero?(temps3)
       end
 
       def rpms
@@ -116,7 +116,7 @@ module EagleTree
       end
 
       def rpms?
-        nonzero?(self.rpms)
+        nonzero?(rpms)
       end
 
       def rpms2
@@ -124,7 +124,7 @@ module EagleTree
       end
 
       def rpms2?
-        nonzero?(self.rpms2)
+        nonzero?(rpms2)
       end
 
       def latitudes
@@ -132,7 +132,7 @@ module EagleTree
       end
 
       def latitudes?
-        nonzero?(self.latitudes)
+        nonzero?(latitudes)
       end
 
       def longitudes
@@ -140,7 +140,7 @@ module EagleTree
       end
 
       def longitudes?
-        nonzero?(self.longitudes)
+        nonzero?(longitudes)
       end
 
       def gps_altitudes
@@ -148,7 +148,7 @@ module EagleTree
       end
 
       def gps_altitudes?
-        nonzero?(self.gps_altitudes)
+        nonzero?(gps_altitudes)
       end
 
       def gps_speeds
@@ -156,7 +156,7 @@ module EagleTree
       end
 
       def gps_speeds?
-        nonzero?(self.gps_speeds)
+        nonzero?(gps_speeds)
       end
 
       def gps_courses
@@ -180,7 +180,7 @@ module EagleTree
       end
 
       def coords?
-        self.longitudes? || self.latitudes? || self.gps_altitudes?
+        longitudes? || latitudes? || gps_altitudes?
       end
 
       # Determines if KML methods can be called for this session.
