@@ -151,7 +151,11 @@ module EagleTree
         nonzero?(gps_altitudes)
       end
 
-      def gps_speeds
+      # Gets the speed, in desired unit.
+      #
+      # @param unit one of :knots, :mph, :kph to define desired unit
+      # @return [Float] speed in the desired unit
+      def gps_speeds(unit = :mph)
         @gps_speeds ||= float_fields('GPSSpeed')
       end
 
