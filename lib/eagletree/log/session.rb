@@ -32,7 +32,7 @@ module EagleTree
       end
 
       def milliseconds
-        @altitudes ||= int_fields('Milliseconds')
+        @milliseconds ||= int_fields('Milliseconds')
       end
 
       def milliseconds?
