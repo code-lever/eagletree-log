@@ -47,8 +47,12 @@ module EagleTree
         nonzero?(altitudes)
       end
 
-      def airspeeds
-        @airspeeds ||= int_fields('Airspeed')
+      # Gets the air speed (Pitot), in the desired unit.
+      #
+      # @param unit one of :knots, :mph, :kph to define desired unit
+      # @return [Float] speed in the desired unit
+      def airspeeds(unit = :mph)
+        @airspeeds ||= float_fields('Airspeed')
       end
 
       def airspeeds?
@@ -151,7 +155,7 @@ module EagleTree
         nonzero?(gps_altitudes)
       end
 
-      # Gets the speed, in desired unit.
+      # Gets the ground speed (GPS), in the desired unit.
       #
       # @param unit one of :knots, :mph, :kph to define desired unit
       # @return [Float] speed in the desired unit
