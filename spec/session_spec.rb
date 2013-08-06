@@ -71,6 +71,36 @@ describe EagleTree::Log::Session do
         subject.coords[2500][2].should be_within(0.1).of(89.0)
       end
 
+      its(:gps_speeds?) { should be_true }
+
+      it 'should have a few select speeds' do
+        subject.gps_speeds[0].should be_within(0.1).of(0.0)
+        subject.gps_speeds[864].should be_within(0.1).of(0.7)
+        subject.gps_speeds[1566].should be_within(0.1).of(194.6)
+        subject.gps_speeds[1879].should be_within(0.1).of(180.6)
+        subject.gps_speeds[2317].should be_within(0.1).of(126.7)
+      end
+
+      its(:gps_courses?) { should be_true }
+
+      it 'should have a few select courses' do
+        subject.gps_courses[0].should be_within(0.1).of(0.0)
+        subject.gps_courses[864].should be_within(0.1).of(291.6)
+        subject.gps_courses[1566].should be_within(0.1).of(197.6)
+        subject.gps_courses[1879].should be_within(0.1).of(189.1)
+        subject.gps_courses[2317].should be_within(0.1).of(266.1)
+      end
+
+      its(:gps_satellites?) { should be_true }
+
+      it 'should have a few select satellites' do
+        subject.gps_satellites[0].should eql(0)
+        subject.gps_satellites[864].should eql(8)
+        subject.gps_satellites[1566].should eql(7)
+        subject.gps_satellites[1879].should eql(7)
+        subject.gps_satellites[2317].should eql(8)
+      end
+
       its(:to_kml?) { should be_true }
 
       its(:to_kml) { should_not be_nil }
@@ -109,6 +139,12 @@ describe EagleTree::Log::Session do
       its(:longitudes?) { should be_false }
 
       its(:gps_altitudes?) { should be_false }
+
+      its(:gps_speeds?) { should be_false }
+
+      its(:gps_courses?) { should be_false }
+
+      its(:gps_satellites?) { should be_false }
 
       specify { expect { subject.to_kml }.to raise_error(RuntimeError) }
 

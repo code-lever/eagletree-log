@@ -151,6 +151,30 @@ module EagleTree
         nonzero?(self.gps_altitudes)
       end
 
+      def gps_speeds
+        @gps_speeds ||= float_fields('GPSSpeed')
+      end
+
+      def gps_speeds?
+        nonzero?(self.gps_speeds)
+      end
+
+      def gps_courses
+        @gps_courses ||= float_fields('GPSCourse')
+      end
+
+      def gps_courses?
+        nonzero?(gps_courses)
+      end
+
+      def gps_satellites
+        @gps_satellites ||= int_fields('NumSats')
+      end
+
+      def gps_satellites?
+        nonzero?(gps_satellites)
+      end
+
       def coords
         @coords ||= longitudes.zip(latitudes, gps_altitudes)
       end
