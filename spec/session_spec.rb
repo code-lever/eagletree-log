@@ -4,15 +4,15 @@ describe EagleTree::Log::Session do
 
   context 'data file funjet-gps.fdr' do
 
-    let(:file) { EagleTree::Log::File.new(data_file('funjet-gps.fdr')) }
+    before(:all) { @file = funjet_fdr }
 
-    subject { file }
+    subject { @file }
 
     it { should have(1).sessions }
 
     context 'session 1' do
 
-      subject { file.sessions[0] }
+      subject { @file.sessions[0] }
 
       it { should have(2929).rows }
 
@@ -115,15 +115,15 @@ describe EagleTree::Log::Session do
 
   context 'data file multi-session-1.fdr' do
 
-    let(:file) { EagleTree::Log::File.new(data_file('multi-session-1.fdr')) }
+    before(:all) { @file = multi_1_fdr }
 
-    subject { file }
+    subject { @file }
 
     it { should have(3).sessions }
 
     context 'session 1' do
 
-      subject { file.sessions[0] }
+      subject { @file.sessions[0] }
 
       it { should have(3555).rows }
 
@@ -156,7 +156,7 @@ describe EagleTree::Log::Session do
 
     context 'session 2' do
 
-      subject { file.sessions[1] }
+      subject { @file.sessions[1] }
 
       it { should have(3699).rows }
 
@@ -175,7 +175,7 @@ describe EagleTree::Log::Session do
 
     context 'session 3' do
 
-      subject { file.sessions[2] }
+      subject { @file.sessions[2] }
 
       it { should have(4241).rows }
 
@@ -187,15 +187,15 @@ describe EagleTree::Log::Session do
 
   context 'data file multi-session-2.fdr' do
 
-    let(:file) { EagleTree::Log::File.new(data_file('multi-session-2.fdr')) }
+    before(:all) { @file = multi_2_fdr }
 
-    subject { file }
+    subject { @file }
 
     it { should have(3).sessions }
 
     context 'session 1' do
 
-      subject { file.sessions[0] }
+      subject { @file.sessions[0] }
 
       it { should have(226).rows }
 
@@ -211,7 +211,7 @@ describe EagleTree::Log::Session do
 
     context 'session 2' do
 
-      subject { file.sessions[1] }
+      subject { @file.sessions[1] }
 
       it { should have(124).rows }
 
@@ -221,7 +221,7 @@ describe EagleTree::Log::Session do
 
     context 'session 3' do
 
-      subject { file.sessions[2] }
+      subject { @file.sessions[2] }
 
       it { should have(6336).rows }
 
@@ -233,7 +233,9 @@ describe EagleTree::Log::Session do
 
   context 'data file t600-1.fdr' do
 
-    subject { EagleTree::Log::File.new(data_file('t600-1.fdr')).sessions[0] }
+    before(:all) { @file = t600_1_fdr }
+
+    subject { @file.sessions[0] }
 
     it { should have(692).rows }
 
@@ -285,7 +287,9 @@ describe EagleTree::Log::Session do
 
   context 'data file t600-2.fdr' do
 
-    subject { EagleTree::Log::File.new(data_file('t600-2.fdr')).sessions[0] }
+    before(:all) { @file = t600_2_fdr }
+
+    subject { @file.sessions[0] }
 
     it { should have(865).rows }
 

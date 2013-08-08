@@ -6,7 +6,9 @@ describe EagleTree::Log::File do
 
     context 'data file empty.fdr' do
 
-      subject { EagleTree::Log::File.new(data_file('empty.fdr')) }
+      before(:all) { @file = empty_fdr }
+
+      subject { @file }
 
       it { should have(0).sessions }
 
@@ -20,7 +22,9 @@ describe EagleTree::Log::File do
 
     context 'data file funjet-gps.fdr' do
 
-      subject { EagleTree::Log::File.new(data_file('funjet-gps.fdr')) }
+      before(:all) { @file = funjet_fdr }
+
+      subject { @file }
 
       it { should have(1).sessions }
 
@@ -36,7 +40,9 @@ describe EagleTree::Log::File do
 
     context 'data file multi-session-1.fdr' do
 
-      subject { EagleTree::Log::File.new(data_file('multi-session-1.fdr')) }
+      before(:all) { @file = multi_1_fdr }
+
+      subject { @file }
 
       it { should have(3).sessions }
 
@@ -52,7 +58,9 @@ describe EagleTree::Log::File do
 
     context 'data file multi-session-2.fdr' do
 
-      subject { EagleTree::Log::File.new(data_file('multi-session-2.fdr')) }
+      before(:all) { @file = multi_2_fdr }
+
+      subject { @file }
 
       it { should have(3).sessions }
 
@@ -66,7 +74,9 @@ describe EagleTree::Log::File do
 
     context 'data file t600-1.fdr' do
 
-      subject { EagleTree::Log::File.new(data_file('t600-1.fdr')) }
+      before(:all) { @file = t600_1_fdr }
+
+      subject { @file }
 
       it { should have(1).sessions }
 
@@ -80,7 +90,9 @@ describe EagleTree::Log::File do
 
     context 'data file t600-2.fdr' do
 
-      subject { EagleTree::Log::File.new(data_file('t600-2.fdr')) }
+      before(:all) { @file = t600_2_fdr }
+
+      subject { @file }
 
       it { should have(1).sessions }
 
@@ -129,7 +141,9 @@ describe EagleTree::Log::File do
 
     context 'with file with GPS data' do
 
-      subject { EagleTree::Log::File.new(data_file('funjet-gps.fdr')) }
+      before(:all) { @file = funjet_fdr }
+
+      subject { @file }
 
       its(:to_kml?) { should be_true }
 
@@ -139,7 +153,9 @@ describe EagleTree::Log::File do
 
     context 'with file without GPS data' do
 
-      subject { EagleTree::Log::File.new(data_file('multi-session-1.fdr')) }
+      before(:all) { @file = multi_1_fdr }
+
+      subject { @file }
 
       its(:to_kml?) { should be_false }
 
@@ -155,7 +171,9 @@ describe EagleTree::Log::File do
 
     context 'with file with GPS data' do
 
-      subject { EagleTree::Log::File.new(data_file('funjet-gps.fdr')) }
+      before(:all) { @file = funjet_fdr }
+
+      subject { @file }
 
       its(:to_kml_file) { should be_a(KMLFile) }
 
@@ -168,7 +186,9 @@ describe EagleTree::Log::File do
 
     context 'with file without GPS data' do
 
-      subject { EagleTree::Log::File.new(data_file('multi-session-1.fdr')) }
+      before(:all) { @file = multi_1_fdr }
+
+      subject { @file }
 
       it 'should raise w/o kml data' do
         expect { subject.to_kml_file }.to raise_error

@@ -36,3 +36,15 @@ def invalid_data_files
   invalid << __FILE__
   invalid << 'NOFILE.TLM'
 end
+
+def empty_fdr; EagleTree::Log::File.new(data_file('empty.fdr')) end
+
+def funjet_fdr; EagleTree::Log::File.new(data_file('funjet-gps.fdr')) end
+
+def multi_1_fdr; EagleTree::Log::File.new(data_file('multi-session-1.fdr')) end
+
+def multi_2_fdr; EagleTree::Log::File.new(data_file('multi-session-2.fdr')) end
+
+def t600_1_fdr; EagleTree::Log::File.new(data_file('t600-1.fdr')) end
+
+def t600_2_fdr; EagleTree::Log::File.new(data_file('t600-2.fdr')) end
