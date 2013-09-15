@@ -122,7 +122,7 @@ describe EagleTree::Log::File do
       files.should have(17).files
 
       files.each do |f|
-        EagleTree::Log::File.eagle_tree?(f).should be_false
+        expect(EagleTree::Log::File.eagle_tree?(f)).to be_false
       end
     end
 
@@ -131,7 +131,7 @@ describe EagleTree::Log::File do
       files.should have(9).files
 
       files.each do |f|
-        EagleTree::Log::File.eagle_tree?(f).should be_true
+        expect(EagleTree::Log::File.eagle_tree?(f)).to be_true
       end
     end
 
@@ -179,7 +179,7 @@ describe EagleTree::Log::File do
 
       it 'should take options for file and placemark' do
         kml = subject.to_kml_file({ :name => 'File Name' })
-        kml.objects[0].name.should eql('File Name')
+        expect(kml.objects[0].name).to eql('File Name')
       end
 
     end
