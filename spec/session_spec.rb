@@ -21,88 +21,88 @@ describe EagleTree::Log::Session do
       its(:milliseconds?) { should be_true }
 
       it 'should have a few select milliseconds' do
-        subject.milliseconds[0].should eql(0)
-        subject.milliseconds[125].should eql(31250)
-        subject.milliseconds[250].should eql(62500)
-        subject.milliseconds[2230].should eql(557500)
+        expect(subject.milliseconds[0]).to eql(0)
+        expect(subject.milliseconds[125]).to eql(31250)
+        expect(subject.milliseconds[250]).to eql(62500)
+        expect(subject.milliseconds[2230]).to eql(557500)
       end
 
       its(:latitudes?) { should be_true }
 
       it 'should have a few select latitudes' do
-        subject.latitudes[0].should be_within(0.0001).of(49.0775)
-        subject.latitudes[1242].should be_within(0.0001).of(49.0793)
-        subject.latitudes[1666].should be_within(0.0001).of(49.0750)
-        subject.latitudes[2077].should be_within(0.0001).of(49.0771)
+        expect(subject.latitudes[0]).to be_within(0.0001).of(49.0775)
+        expect(subject.latitudes[1242]).to be_within(0.0001).of(49.0793)
+        expect(subject.latitudes[1666]).to be_within(0.0001).of(49.0750)
+        expect(subject.latitudes[2077]).to be_within(0.0001).of(49.0771)
       end
 
       its(:longitudes?) { should be_true }
 
       it 'should have a few select longitudes' do
-        subject.longitudes[0].should be_within(0.0001).of(2.1545)
-        subject.longitudes[1356].should be_within(0.0001).of(2.1530)
-        subject.longitudes[1727].should be_within(0.0001).of(2.1560)
-        subject.longitudes[2317].should be_within(0.0001).of(2.1519)
+        expect(subject.longitudes[0]).to be_within(0.0001).of(2.1545)
+        expect(subject.longitudes[1356]).to be_within(0.0001).of(2.1530)
+        expect(subject.longitudes[1727]).to be_within(0.0001).of(2.1560)
+        expect(subject.longitudes[2317]).to be_within(0.0001).of(2.1519)
       end
 
       its(:gps_altitudes?) { should be_true }
 
       it 'should have a few select gps_altitudes' do
-        subject.gps_altitudes[864].should be_within(0.1).of(75.0)
-        subject.gps_altitudes[1566].should be_within(0.1).of(208.0)
-        subject.gps_altitudes[1879].should be_within(0.1).of(99.0)
-        subject.gps_altitudes[2317].should be_within(0.1).of(168.0)
+        expect(subject.gps_altitudes[864]).to be_within(0.1).of(75.0)
+        expect(subject.gps_altitudes[1566]).to be_within(0.1).of(208.0)
+        expect(subject.gps_altitudes[1879]).to be_within(0.1).of(99.0)
+        expect(subject.gps_altitudes[2317]).to be_within(0.1).of(168.0)
       end
 
       its(:coords) { should be_true }
 
       it 'should have a few select coords' do
-        subject.coords[0][0].should be_within(0.0001).of(2.1545)
-        subject.coords[0][1].should be_within(0.0001).of(49.0775)
-        subject.coords[0][2].should be_within(0.1).of(102.0)
-        subject.coords[0][3].should be_within(0.1).of(0.0)
-        subject.coords[500][0].should be_within(0.0001).of(2.1545)
-        subject.coords[500][1].should be_within(0.0001).of(49.0775)
-        subject.coords[500][2].should be_within(0.1).of(75.0)
-        subject.coords[500][3].should be_within(0.1).of(175.7)
-        subject.coords[1500][0].should be_within(0.0001).of(2.1531)
-        subject.coords[1500][1].should be_within(0.0001).of(49.0780)
-        subject.coords[1500][2].should be_within(0.1).of(121.0)
-        subject.coords[1500][3].should be_within(0.1).of(35.1)
-        subject.coords[2500][0].should be_within(0.0001).of(2.1542)
-        subject.coords[2500][1].should be_within(0.0001).of(49.0778)
-        subject.coords[2500][2].should be_within(0.1).of(89.0)
-        subject.coords[2500][3].should be_within(0.1).of(8.6)
+        expect(subject.coords[0][0]).to be_within(0.0001).of(2.1545)
+        expect(subject.coords[0][1]).to be_within(0.0001).of(49.0775)
+        expect(subject.coords[0][2]).to be_within(0.1).of(102.0)
+        expect(subject.coords[0][3]).to be_within(0.1).of(0.0)
+        expect(subject.coords[500][0]).to be_within(0.0001).of(2.1545)
+        expect(subject.coords[500][1]).to be_within(0.0001).of(49.0775)
+        expect(subject.coords[500][2]).to be_within(0.1).of(75.0)
+        expect(subject.coords[500][3]).to be_within(0.1).of(175.7)
+        expect(subject.coords[1500][0]).to be_within(0.0001).of(2.1531)
+        expect(subject.coords[1500][1]).to be_within(0.0001).of(49.0780)
+        expect(subject.coords[1500][2]).to be_within(0.1).of(121.0)
+        expect(subject.coords[1500][3]).to be_within(0.1).of(35.1)
+        expect(subject.coords[2500][0]).to be_within(0.0001).of(2.1542)
+        expect(subject.coords[2500][1]).to be_within(0.0001).of(49.0778)
+        expect(subject.coords[2500][2]).to be_within(0.1).of(89.0)
+        expect(subject.coords[2500][3]).to be_within(0.1).of(8.6)
       end
 
       its(:gps_speeds?) { should be_true }
 
       it 'should have a few select speeds' do
-        subject.gps_speeds[0].should be_within(0.1).of(0.0)
-        subject.gps_speeds[864].should be_within(0.1).of(0.7)
-        subject.gps_speeds[1566].should be_within(0.1).of(194.6)
-        subject.gps_speeds[1879].should be_within(0.1).of(180.6)
-        subject.gps_speeds[2317].should be_within(0.1).of(126.7)
+        expect(subject.gps_speeds[0]).to be_within(0.1).of(0.0)
+        expect(subject.gps_speeds[864]).to be_within(0.1).of(0.7)
+        expect(subject.gps_speeds[1566]).to be_within(0.1).of(194.6)
+        expect(subject.gps_speeds[1879]).to be_within(0.1).of(180.6)
+        expect(subject.gps_speeds[2317]).to be_within(0.1).of(126.7)
       end
 
       its(:gps_courses?) { should be_true }
 
       it 'should have a few select courses' do
-        subject.gps_courses[0].should be_within(0.1).of(0.0)
-        subject.gps_courses[864].should be_within(0.1).of(291.6)
-        subject.gps_courses[1566].should be_within(0.1).of(197.6)
-        subject.gps_courses[1879].should be_within(0.1).of(189.1)
-        subject.gps_courses[2317].should be_within(0.1).of(266.1)
+        expect(subject.gps_courses[0]).to be_within(0.1).of(0.0)
+        expect(subject.gps_courses[864]).to be_within(0.1).of(291.6)
+        expect(subject.gps_courses[1566]).to be_within(0.1).of(197.6)
+        expect(subject.gps_courses[1879]).to be_within(0.1).of(189.1)
+        expect(subject.gps_courses[2317]).to be_within(0.1).of(266.1)
       end
 
       its(:gps_satellites?) { should be_true }
 
       it 'should have a few select satellites' do
-        subject.gps_satellites[0].should eql(0)
-        subject.gps_satellites[864].should eql(8)
-        subject.gps_satellites[1566].should eql(7)
-        subject.gps_satellites[1879].should eql(7)
-        subject.gps_satellites[2317].should eql(8)
+        expect(subject.gps_satellites[0]).to eql(0)
+        expect(subject.gps_satellites[864]).to eql(8)
+        expect(subject.gps_satellites[1566]).to eql(7)
+        expect(subject.gps_satellites[1879]).to eql(7)
+        expect(subject.gps_satellites[2317]).to eql(8)
       end
 
       its(:to_kml?) { should be_true }
@@ -132,10 +132,10 @@ describe EagleTree::Log::Session do
       its(:milliseconds?) { should be_true }
 
       it 'should have a few select milliseconds' do
-        subject.milliseconds[0].should eql(0)
-        subject.milliseconds[125].should eql(12500)
-        subject.milliseconds[250].should eql(25000)
-        subject.milliseconds[2230].should eql(223000)
+        expect(subject.milliseconds[0]).to eql(0)
+        expect(subject.milliseconds[125]).to eql(12500)
+        expect(subject.milliseconds[250]).to eql(25000)
+        expect(subject.milliseconds[2230]).to eql(223000)
       end
 
       its(:latitudes?) { should be_false }
@@ -165,10 +165,10 @@ describe EagleTree::Log::Session do
       its(:milliseconds?) { should be_true }
 
       it 'should have a few select milliseconds' do
-        subject.milliseconds[0].should eql(355500)
-        subject.milliseconds[125].should eql(368000)
-        subject.milliseconds[250].should eql(380500)
-        subject.milliseconds[2230].should eql(578500)
+        expect(subject.milliseconds[0]).to eql(355500)
+        expect(subject.milliseconds[125]).to eql(368000)
+        expect(subject.milliseconds[250]).to eql(380500)
+        expect(subject.milliseconds[2230]).to eql(578500)
       end
 
     end
@@ -252,19 +252,19 @@ describe EagleTree::Log::Session do
     its(:pack_voltages?) { should be_true }
 
     it 'should have a few select pack voltages' do
-      subject.pack_voltages[0].should be_within(0.1).of(46.5)
-      subject.pack_voltages[100].should be_within(0.1).of(46.5)
-      subject.pack_voltages[250].should be_within(0.1).of(42.8)
-      subject.pack_voltages[500].should be_within(0.1).of(45.2)
+      expect(subject.pack_voltages[0]).to be_within(0.1).of(46.5)
+      expect(subject.pack_voltages[100]).to be_within(0.1).of(46.5)
+      expect(subject.pack_voltages[250]).to be_within(0.1).of(42.8)
+      expect(subject.pack_voltages[500]).to be_within(0.1).of(45.2)
     end
 
     its(:amps?) { should be_true }
 
     it 'should have a few select amps' do
-      subject.amps[0].should be_within(0.01).of(0.18)
-      subject.amps[100].should be_within(0.01).of(0.31)
-      subject.amps[250].should be_within(0.01).of(19.40)
-      subject.amps[500].should be_within(0.01).of(0.12)
+      expect(subject.amps[0]).to be_within(0.01).of(0.18)
+      expect(subject.amps[100]).to be_within(0.01).of(0.31)
+      expect(subject.amps[250]).to be_within(0.01).of(19.40)
+      expect(subject.amps[500]).to be_within(0.01).of(0.12)
     end
 
     its(:temps1?) { should be_false }
@@ -306,19 +306,19 @@ describe EagleTree::Log::Session do
     its(:pack_voltages?) { should be_true }
 
     it 'should have a few select pack voltages' do
-      subject.pack_voltages[0].should be_within(0.1).of(46.6)
-      subject.pack_voltages[100].should be_within(0.1).of(46.6)
-      subject.pack_voltages[250].should be_within(0.1).of(46.6)
-      subject.pack_voltages[500].should be_within(0.1).of(42.3)
+      expect(subject.pack_voltages[0]).to be_within(0.1).of(46.6)
+      expect(subject.pack_voltages[100]).to be_within(0.1).of(46.6)
+      expect(subject.pack_voltages[250]).to be_within(0.1).of(46.6)
+      expect(subject.pack_voltages[500]).to be_within(0.1).of(42.3)
     end
 
     its(:amps?) { should be_true }
 
     it 'should have a few select amps' do
-      subject.amps[0].should be_within(0.01).of(0.18)
-      subject.amps[100].should be_within(0.01).of(0.0)
-      subject.amps[250].should be_within(0.01).of(0.0)
-      subject.amps[500].should be_within(0.01).of(19.9)
+      expect(subject.amps[0]).to be_within(0.01).of(0.18)
+      expect(subject.amps[100]).to be_within(0.01).of(0.0)
+      expect(subject.amps[250]).to be_within(0.01).of(0.0)
+      expect(subject.amps[500]).to be_within(0.01).of(19.9)
     end
 
     its(:temps1?) { should be_false }
