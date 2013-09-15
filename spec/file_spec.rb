@@ -135,6 +135,14 @@ describe EagleTree::Log::File do
       end
     end
 
+    it 'should return a file object' do
+      expect(EagleTree::Log::File.eagle_tree?(data_files[0])).to be_a(EagleTree::Log::File)
+    end
+
+    it 'should return nil when invalid' do
+      expect(EagleTree::Log::File.eagle_tree?(invalid_data_files[0])).to be_nil
+    end
+
   end
 
   describe '#to_kml' do
