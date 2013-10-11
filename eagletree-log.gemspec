@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["nick@codelever.com"]
   spec.description   = %q{Read and interpret Eagle Tree telemetry log files.}
   spec.summary       = %q{Eagle Tree telemetry log file reader}
-  spec.homepage      = ""
+  spec.homepage      = "http://github.com/code-lever/eagletree-log"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
