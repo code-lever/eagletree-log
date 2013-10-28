@@ -30,7 +30,7 @@ module EagleTree
       def initialize uri
         @sessions = []
 
-        open(uri, 'rb') do |file|
+        open(uri, 'r') do |file|
           @name = file.gets.strip
           @meta = file.gets.strip.split
           session_count = @meta[27].to_i
