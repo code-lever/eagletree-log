@@ -84,6 +84,8 @@ describe EagleTree::Log::File do
 
       its(:version) { should eql(0.0) }
 
+      its(:duration) { should be_within(0.1).of(585.7) }
+
     end
 
     context 'data file old-2.fdr' do
@@ -98,6 +100,8 @@ describe EagleTree::Log::File do
 
       its(:version) { should eql(5.7) }
 
+      its(:duration) { should be_within(0.1).of(778.7) }
+
     end
 
     context 'data file old-3.fdr' do
@@ -111,6 +115,8 @@ describe EagleTree::Log::File do
       its(:name) { should eql('Prestige') }
 
       its(:version) { should eql(5.11) }
+
+      its(:duration) { should be_within(0.1).of(2179.0) }
 
     end
 
