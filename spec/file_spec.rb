@@ -72,6 +72,36 @@ describe EagleTree::Log::File do
 
     end
 
+    context 'data file old-1.fdr' do
+
+      before(:all) { @file = old_1_fdr }
+
+      subject { @file }
+
+      it { should have(3).sessions }
+
+    end
+
+    context 'data file old-2.fdr' do
+
+      before(:all) { @file = old_2_fdr }
+
+      subject { @file }
+
+      it { should have(1).sessions }
+
+    end
+
+    context 'data file old-3.fdr' do
+
+      before(:all) { @file = old_3_fdr }
+
+      subject { @file }
+
+      it { should have(1).sessions }
+
+    end
+
     context 'data file t600-1.fdr' do
 
       before(:all) { @file = t600_1_fdr }
