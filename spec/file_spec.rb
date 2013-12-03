@@ -80,6 +80,10 @@ describe EagleTree::Log::File do
 
       it { should have(3).sessions }
 
+      its(:name) { should eql('Model01') }
+
+      its(:version) { should eql(0.0) }
+
     end
 
     context 'data file old-2.fdr' do
@@ -90,6 +94,10 @@ describe EagleTree::Log::File do
 
       it { should have(1).sessions }
 
+      its(:name) { should eql('E-Observer') }
+
+      its(:version) { should eql(5.7) }
+
     end
 
     context 'data file old-3.fdr' do
@@ -99,6 +107,10 @@ describe EagleTree::Log::File do
       subject { @file }
 
       it { should have(1).sessions }
+
+      its(:name) { should eql('Prestige') }
+
+      its(:version) { should eql(5.11) }
 
     end
 
