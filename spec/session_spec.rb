@@ -341,6 +341,94 @@ describe EagleTree::Log::Session do
 
   end
 
+  context 'data file old-2.fdr' do
+
+    before(:all) { @file = old_2_fdr }
+
+    context 'session 0' do
+
+      subject { @file.sessions[0] }
+
+      its(:duration) { should be_within(0.1).of(778.7) }
+
+      it { should have(7787).milliseconds }
+
+      its(:altitudes?) { should be_false }
+
+      its(:airspeeds?) { should be_false }
+
+      its(:servo_currents?) { should be_false }
+
+      its(:throttles?) { should be_false }
+
+      its(:pack_voltages?) { should be_true }
+
+      its(:amps?) { should be_true }
+
+      its(:temps1?) { should be_true }
+
+      its(:temps2?) { should be_true }
+
+      its(:temps3?) { should be_false }
+
+      its(:rpms?) { should be_false }
+
+      its(:rpms2?) { should be_false }
+
+      its(:latitudes?) { should be_false }
+
+      its(:longitudes?) { should be_false }
+
+      its(:gps_altitudes?) { should be_false }
+
+    end
+
+  end
+
+  context 'data file old-3.fdr' do
+
+    before(:all) { @file = old_3_fdr }
+
+    context 'session 0' do
+
+      subject { @file.sessions[0] }
+
+      its(:duration) { should be_within(0.1).of(2179.0) }
+
+      it { should have(8716).milliseconds }
+
+      its(:altitudes?) { should be_false }
+
+      its(:airspeeds?) { should be_false }
+
+      its(:servo_currents?) { should be_false }
+
+      its(:throttles?) { should be_false }
+
+      its(:pack_voltages?) { should be_true }
+
+      its(:amps?) { should be_true }
+
+      its(:temps1?) { should be_true }
+
+      its(:temps2?) { should be_true }
+
+      its(:temps3?) { should be_false }
+
+      its(:rpms?) { should be_false }
+
+      its(:rpms2?) { should be_false }
+
+      its(:latitudes?) { should be_false }
+
+      its(:longitudes?) { should be_false }
+
+      its(:gps_altitudes?) { should be_false }
+
+    end
+
+  end
+
   describe '#to_kml' do
 
     subject { file.sessions[0] }

@@ -49,8 +49,6 @@ def t600_1_fdr; EagleTree::Log::File.new(data_file('t600-1.fdr')) end
 
 def t600_2_fdr; EagleTree::Log::File.new(data_file('t600-2.fdr')) end
 
-def old_1_fdr; EagleTree::Log::File.new(data_file('old-1.fdr')) end
-
 def old_2_fdr; EagleTree::Log::File.new(data_file('old-2.fdr')) end
 
 def old_3_fdr; EagleTree::Log::File.new(data_file('old-3.fdr')) end
