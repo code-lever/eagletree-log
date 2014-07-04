@@ -72,6 +72,38 @@ describe EagleTree::Log::File do
 
     end
 
+    context 'data file old-2.fdr' do
+
+      before(:all) { @file = old_2_fdr }
+
+      subject { @file }
+
+      it { should have(1).sessions }
+
+      its(:name) { should eql('E-Observer') }
+
+      its(:version) { should eql(5.7) }
+
+      its(:duration) { should be_within(0.1).of(778.7) }
+
+    end
+
+    context 'data file old-3.fdr' do
+
+      before(:all) { @file = old_3_fdr }
+
+      subject { @file }
+
+      it { should have(1).sessions }
+
+      its(:name) { should eql('Prestige') }
+
+      its(:version) { should eql(5.11) }
+
+      its(:duration) { should be_within(0.1).of(2179.0) }
+
+    end
+
     context 'data file t600-1.fdr' do
 
       before(:all) { @file = t600_1_fdr }
@@ -128,7 +160,7 @@ describe EagleTree::Log::File do
 
     it 'should be true for valid files' do
       files = data_files
-      files.should have(9).files
+      files.should have(8).files
 
       files.each do |f|
         expect(EagleTree::Log::File.eagle_tree?(f)).to be_true
