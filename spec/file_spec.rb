@@ -10,7 +10,7 @@ describe EagleTree::Log::File do
 
       subject { @file }
 
-      it { should have(0).sessions }
+      it { is_expected.to have(0).sessions }
 
       its(:name) { should eql('Skywalker') }
 
@@ -26,7 +26,7 @@ describe EagleTree::Log::File do
 
       subject { @file }
 
-      it { should have(1).sessions }
+      it { is_expected.to have(1).sessions }
 
       its(:duration) { should be_within(0.1).of(732.3) }
 
@@ -44,7 +44,7 @@ describe EagleTree::Log::File do
 
       subject { @file }
 
-      it { should have(3).sessions }
+      it { is_expected.to have(3).sessions }
 
       its(:duration) { should be_within(0.1).of(1149.3) }
 
@@ -62,7 +62,7 @@ describe EagleTree::Log::File do
 
       subject { @file }
 
-      it { should have(3).sessions }
+      it { is_expected.to have(3).sessions }
 
       its(:name) { should eql('Losi XXX4') }
 
@@ -78,7 +78,7 @@ describe EagleTree::Log::File do
 
       subject { @file }
 
-      it { should have(1).sessions }
+      it { is_expected.to have(1).sessions }
 
       its(:name) { should eql('E-Observer') }
 
@@ -94,7 +94,7 @@ describe EagleTree::Log::File do
 
       subject { @file }
 
-      it { should have(1).sessions }
+      it { is_expected.to have(1).sessions }
 
       its(:name) { should eql('Prestige') }
 
@@ -110,7 +110,7 @@ describe EagleTree::Log::File do
 
       subject { @file }
 
-      it { should have(1).sessions }
+      it { is_expected.to have(1).sessions }
 
       its(:name) { should eql('T-Rex 600') }
 
@@ -126,7 +126,7 @@ describe EagleTree::Log::File do
 
       subject { @file }
 
-      it { should have(1).sessions }
+      it { is_expected.to have(1).sessions }
 
       its(:name) { should eql('T-Rex 600') }
 
@@ -138,7 +138,7 @@ describe EagleTree::Log::File do
 
     it 'should raise for invalid or missing files' do
       files = invalid_data_files
-      files.should have(17).files
+      expect(files).to have(17).files
 
       files.each do |f|
         expect { EagleTree::Log::File.new(f) }.to raise_error
@@ -151,7 +151,7 @@ describe EagleTree::Log::File do
 
     it 'should be false for invalid or missing files' do
       files = invalid_data_files
-      files.should have(17).files
+      expect(files).to have(17).files
 
       files.each do |f|
         expect(EagleTree::Log::File.eagle_tree?(f)).to be_falsey
@@ -160,7 +160,7 @@ describe EagleTree::Log::File do
 
     it 'should be true for valid files' do
       files = data_files
-      files.should have(8).files
+      expect(files).to have(8).files
 
       files.each do |f|
         expect(EagleTree::Log::File.eagle_tree?(f)).to be_truthy

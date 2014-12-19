@@ -8,13 +8,13 @@ describe EagleTree::Log::Session do
 
     subject { @file }
 
-    it { should have(1).sessions }
+    it { is_expected.to have(1).sessions }
 
     context 'session 1' do
 
       subject { @file.sessions[0] }
 
-      it { should have(2929).rows }
+      it { is_expected.to have(2929).rows }
 
       its(:duration) { should be_within(0.1).of(732.3) }
 
@@ -119,13 +119,13 @@ describe EagleTree::Log::Session do
 
     subject { @file }
 
-    it { should have(3).sessions }
+    it { is_expected.to have(3).sessions }
 
     context 'session 1' do
 
       subject { @file.sessions[0] }
 
-      it { should have(3555).rows }
+      it { is_expected.to have(3555).rows }
 
       its(:duration) { should be_within(0.1).of(355.5) }
 
@@ -158,7 +158,7 @@ describe EagleTree::Log::Session do
 
       subject { @file.sessions[1] }
 
-      it { should have(3699).rows }
+      it { is_expected.to have(3699).rows }
 
       its(:duration) { should be_within(0.1).of(369.9) }
 
@@ -177,7 +177,7 @@ describe EagleTree::Log::Session do
 
       subject { @file.sessions[2] }
 
-      it { should have(4241).rows }
+      it { is_expected.to have(4241).rows }
 
       its(:duration) { should be_within(0.1).of(424.0) }
 
@@ -191,13 +191,13 @@ describe EagleTree::Log::Session do
 
     subject { @file }
 
-    it { should have(3).sessions }
+    it { is_expected.to have(3).sessions }
 
     context 'session 1' do
 
       subject { @file.sessions[0] }
 
-      it { should have(226).rows }
+      it { is_expected.to have(226).rows }
 
       its(:duration) { should be_within(0.1).of(22.6) }
 
@@ -213,7 +213,7 @@ describe EagleTree::Log::Session do
 
       subject { @file.sessions[1] }
 
-      it { should have(124).rows }
+      it { is_expected.to have(124).rows }
 
       its(:duration) { should be_within(0.1).of(12.4) }
 
@@ -223,7 +223,7 @@ describe EagleTree::Log::Session do
 
       subject { @file.sessions[2] }
 
-      it { should have(6336).rows }
+      it { is_expected.to have(6336).rows }
 
       its(:duration) { should be_within(0.1).of(633.5) }
 
@@ -237,7 +237,7 @@ describe EagleTree::Log::Session do
 
     subject { @file.sessions[0] }
 
-    it { should have(692).rows }
+    it { is_expected.to have(692).rows }
 
     its(:duration) { should be_within(0.1).of(69.2) }
 
@@ -291,7 +291,7 @@ describe EagleTree::Log::Session do
 
     subject { @file.sessions[0] }
 
-    it { should have(865).rows }
+    it { is_expected.to have(865).rows }
 
     its(:duration) { should be_within(0.1).of(86.5) }
 
@@ -351,7 +351,7 @@ describe EagleTree::Log::Session do
 
       its(:duration) { should be_within(0.1).of(778.7) }
 
-      it { should have(7787).milliseconds }
+      it { is_expected.to have(7787).milliseconds }
 
       its(:altitudes?) { should be false }
 
@@ -395,7 +395,7 @@ describe EagleTree::Log::Session do
 
       its(:duration) { should be_within(0.1).of(2179.0) }
 
-      it { should have(8716).milliseconds }
+      it { is_expected.to have(8716).milliseconds }
 
       its(:altitudes?) { should be false }
 
@@ -465,8 +465,8 @@ describe EagleTree::Log::Session do
 
       it 'should take options for file and placemark' do
         kml = subject.to_kml_file({ :name => 'File Name' }, { :name => 'Placemark Name' })
-        kml.objects[0].name.should eql('File Name')
-        kml.objects[0].features[0].name.should eql('Placemark Name')
+        expect(kml.objects[0].name).to eql('File Name')
+        expect(kml.objects[0].features[0].name).to eql('Placemark Name')
       end
 
     end
