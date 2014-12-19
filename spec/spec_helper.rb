@@ -4,6 +4,9 @@ require 'simplecov-rcov'
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start 'gem' if ENV['COVERAGE']
 
+require 'rspec/collection_matchers'
+require 'rspec/its'
+
 require 'awesome_print'
 require 'pathname'
 require 'eagletree/log'

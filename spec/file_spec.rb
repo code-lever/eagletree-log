@@ -154,7 +154,7 @@ describe EagleTree::Log::File do
       files.should have(17).files
 
       files.each do |f|
-        expect(EagleTree::Log::File.eagle_tree?(f)).to be_false
+        expect(EagleTree::Log::File.eagle_tree?(f)).to be_falsey
       end
     end
 
@@ -163,7 +163,7 @@ describe EagleTree::Log::File do
       files.should have(8).files
 
       files.each do |f|
-        expect(EagleTree::Log::File.eagle_tree?(f)).to be_true
+        expect(EagleTree::Log::File.eagle_tree?(f)).to be_truthy
       end
     end
 
@@ -185,7 +185,7 @@ describe EagleTree::Log::File do
 
       subject { @file }
 
-      its(:to_kml?) { should be_true }
+      its(:to_kml?) { should be true }
 
       its(:to_kml) { should be_a(String) }
 
@@ -197,7 +197,7 @@ describe EagleTree::Log::File do
 
       subject { @file }
 
-      its(:to_kml?) { should be_false }
+      its(:to_kml?) { should be false }
 
       it 'should raise w/o kml data' do
         expect { subject.to_kml }.to raise_error

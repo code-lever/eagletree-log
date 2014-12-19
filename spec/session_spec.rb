@@ -18,7 +18,7 @@ describe EagleTree::Log::Session do
 
       its(:duration) { should be_within(0.1).of(732.3) }
 
-      its(:milliseconds?) { should be_true }
+      its(:milliseconds?) { should be true }
 
       it 'should have a few select milliseconds' do
         expect(subject.milliseconds[0]).to eql(0)
@@ -27,7 +27,7 @@ describe EagleTree::Log::Session do
         expect(subject.milliseconds[2230]).to eql(557500)
       end
 
-      its(:latitudes?) { should be_true }
+      its(:latitudes?) { should be true }
 
       it 'should have a few select latitudes' do
         expect(subject.latitudes[0]).to be_within(0.0001).of(49.0775)
@@ -36,7 +36,7 @@ describe EagleTree::Log::Session do
         expect(subject.latitudes[2077]).to be_within(0.0001).of(49.0771)
       end
 
-      its(:longitudes?) { should be_true }
+      its(:longitudes?) { should be true }
 
       it 'should have a few select longitudes' do
         expect(subject.longitudes[0]).to be_within(0.0001).of(2.1545)
@@ -45,7 +45,7 @@ describe EagleTree::Log::Session do
         expect(subject.longitudes[2317]).to be_within(0.0001).of(2.1519)
       end
 
-      its(:gps_altitudes?) { should be_true }
+      its(:gps_altitudes?) { should be true }
 
       it 'should have a few select gps_altitudes' do
         expect(subject.gps_altitudes[864]).to be_within(0.1).of(75.0)
@@ -54,7 +54,7 @@ describe EagleTree::Log::Session do
         expect(subject.gps_altitudes[2317]).to be_within(0.1).of(168.0)
       end
 
-      its(:coords) { should be_true }
+      its(:coords?) { should be true }
 
       it 'should have a few select coords' do
         expect(subject.coords[0][0]).to be_within(0.0001).of(2.1545)
@@ -75,7 +75,7 @@ describe EagleTree::Log::Session do
         expect(subject.coords[2500][3]).to be_within(0.1).of(8.6)
       end
 
-      its(:gps_speeds?) { should be_true }
+      its(:gps_speeds?) { should be true }
 
       it 'should have a few select speeds' do
         expect(subject.gps_speeds[0]).to be_within(0.1).of(0.0)
@@ -85,7 +85,7 @@ describe EagleTree::Log::Session do
         expect(subject.gps_speeds[2317]).to be_within(0.1).of(126.7)
       end
 
-      its(:gps_courses?) { should be_true }
+      its(:gps_courses?) { should be true }
 
       it 'should have a few select courses' do
         expect(subject.gps_courses[0]).to be_within(0.1).of(0.0)
@@ -95,7 +95,7 @@ describe EagleTree::Log::Session do
         expect(subject.gps_courses[2317]).to be_within(0.1).of(266.1)
       end
 
-      its(:gps_satellites?) { should be_true }
+      its(:gps_satellites?) { should be true }
 
       it 'should have a few select satellites' do
         expect(subject.gps_satellites[0]).to eql(0)
@@ -105,7 +105,7 @@ describe EagleTree::Log::Session do
         expect(subject.gps_satellites[2317]).to eql(8)
       end
 
-      its(:to_kml?) { should be_true }
+      its(:to_kml?) { should be true }
 
       its(:to_kml) { should_not be_nil }
 
@@ -129,7 +129,7 @@ describe EagleTree::Log::Session do
 
       its(:duration) { should be_within(0.1).of(355.5) }
 
-      its(:milliseconds?) { should be_true }
+      its(:milliseconds?) { should be true }
 
       it 'should have a few select milliseconds' do
         expect(subject.milliseconds[0]).to eql(0)
@@ -138,17 +138,17 @@ describe EagleTree::Log::Session do
         expect(subject.milliseconds[2230]).to eql(223000)
       end
 
-      its(:latitudes?) { should be_false }
+      its(:latitudes?) { should be false }
 
-      its(:longitudes?) { should be_false }
+      its(:longitudes?) { should be false }
 
-      its(:gps_altitudes?) { should be_false }
+      its(:gps_altitudes?) { should be false }
 
-      its(:gps_speeds?) { should be_false }
+      its(:gps_speeds?) { should be false }
 
-      its(:gps_courses?) { should be_false }
+      its(:gps_courses?) { should be false }
 
-      its(:gps_satellites?) { should be_false }
+      its(:gps_satellites?) { should be false }
 
       specify { expect { subject.to_kml }.to raise_error(RuntimeError) }
 
@@ -162,7 +162,7 @@ describe EagleTree::Log::Session do
 
       its(:duration) { should be_within(0.1).of(369.9) }
 
-      its(:milliseconds?) { should be_true }
+      its(:milliseconds?) { should be true }
 
       it 'should have a few select milliseconds' do
         expect(subject.milliseconds[0]).to eql(355500)
@@ -201,11 +201,11 @@ describe EagleTree::Log::Session do
 
       its(:duration) { should be_within(0.1).of(22.6) }
 
-      its(:latitudes?) { should be_false }
+      its(:latitudes?) { should be false }
 
-      its(:longitudes?) { should be_false }
+      its(:longitudes?) { should be false }
 
-      its(:gps_altitudes?) { should be_false }
+      its(:gps_altitudes?) { should be false }
 
     end
 
@@ -241,15 +241,15 @@ describe EagleTree::Log::Session do
 
     its(:duration) { should be_within(0.1).of(69.2) }
 
-    its(:altitudes?) { should be_false }
+    its(:altitudes?) { should be false }
 
-    its(:airspeeds?) { should be_false }
+    its(:airspeeds?) { should be false }
 
-    its(:servo_currents?) { should be_false }
+    its(:servo_currents?) { should be false }
 
-    its(:throttles?) { should be_false }
+    its(:throttles?) { should be false }
 
-    its(:pack_voltages?) { should be_true }
+    its(:pack_voltages?) { should be true }
 
     it 'should have a few select pack voltages' do
       expect(subject.pack_voltages[0]).to be_within(0.1).of(46.5)
@@ -258,7 +258,7 @@ describe EagleTree::Log::Session do
       expect(subject.pack_voltages[500]).to be_within(0.1).of(45.2)
     end
 
-    its(:amps?) { should be_true }
+    its(:amps?) { should be true }
 
     it 'should have a few select amps' do
       expect(subject.amps[0]).to be_within(0.01).of(0.18)
@@ -267,21 +267,21 @@ describe EagleTree::Log::Session do
       expect(subject.amps[500]).to be_within(0.01).of(0.12)
     end
 
-    its(:temps1?) { should be_false }
+    its(:temps1?) { should be false }
 
-    its(:temps2?) { should be_false }
+    its(:temps2?) { should be false }
 
-    its(:temps3?) { should be_false }
+    its(:temps3?) { should be false }
 
-    its(:rpms?) { should be_true }
+    its(:rpms?) { should be true }
 
-    its(:rpms2?) { should be_false }
+    its(:rpms2?) { should be false }
 
-    its(:latitudes?) { should be_false }
+    its(:latitudes?) { should be false }
 
-    its(:longitudes?) { should be_false }
+    its(:longitudes?) { should be false }
 
-    its(:gps_altitudes?) { should be_false }
+    its(:gps_altitudes?) { should be false }
 
   end
 
@@ -295,15 +295,15 @@ describe EagleTree::Log::Session do
 
     its(:duration) { should be_within(0.1).of(86.5) }
 
-    its(:altitudes?) { should be_false }
+    its(:altitudes?) { should be false }
 
-    its(:airspeeds?) { should be_false }
+    its(:airspeeds?) { should be false }
 
-    its(:servo_currents?) { should be_false }
+    its(:servo_currents?) { should be false }
 
-    its(:throttles?) { should be_false }
+    its(:throttles?) { should be false }
 
-    its(:pack_voltages?) { should be_true }
+    its(:pack_voltages?) { should be true }
 
     it 'should have a few select pack voltages' do
       expect(subject.pack_voltages[0]).to be_within(0.1).of(46.6)
@@ -312,7 +312,7 @@ describe EagleTree::Log::Session do
       expect(subject.pack_voltages[500]).to be_within(0.1).of(42.3)
     end
 
-    its(:amps?) { should be_true }
+    its(:amps?) { should be true }
 
     it 'should have a few select amps' do
       expect(subject.amps[0]).to be_within(0.01).of(0.18)
@@ -321,21 +321,21 @@ describe EagleTree::Log::Session do
       expect(subject.amps[500]).to be_within(0.01).of(19.9)
     end
 
-    its(:temps1?) { should be_false }
+    its(:temps1?) { should be false }
 
-    its(:temps2?) { should be_false }
+    its(:temps2?) { should be false }
 
-    its(:temps3?) { should be_false }
+    its(:temps3?) { should be false }
 
-    its(:rpms?) { should be_true }
+    its(:rpms?) { should be true }
 
-    its(:rpms2?) { should be_false }
+    its(:rpms2?) { should be false }
 
-    its(:latitudes?) { should be_false }
+    its(:latitudes?) { should be false }
 
-    its(:longitudes?) { should be_false }
+    its(:longitudes?) { should be false }
 
-    its(:gps_altitudes?) { should be_false }
+    its(:gps_altitudes?) { should be false }
 
     specify { expect { subject.to_kml }.to raise_error(RuntimeError) }
 
@@ -353,33 +353,33 @@ describe EagleTree::Log::Session do
 
       it { should have(7787).milliseconds }
 
-      its(:altitudes?) { should be_false }
+      its(:altitudes?) { should be false }
 
-      its(:airspeeds?) { should be_false }
+      its(:airspeeds?) { should be false }
 
-      its(:servo_currents?) { should be_false }
+      its(:servo_currents?) { should be false }
 
-      its(:throttles?) { should be_false }
+      its(:throttles?) { should be false }
 
-      its(:pack_voltages?) { should be_true }
+      its(:pack_voltages?) { should be true }
 
-      its(:amps?) { should be_true }
+      its(:amps?) { should be true }
 
-      its(:temps1?) { should be_true }
+      its(:temps1?) { should be true }
 
-      its(:temps2?) { should be_true }
+      its(:temps2?) { should be true }
 
-      its(:temps3?) { should be_false }
+      its(:temps3?) { should be false }
 
-      its(:rpms?) { should be_false }
+      its(:rpms?) { should be false }
 
-      its(:rpms2?) { should be_false }
+      its(:rpms2?) { should be false }
 
-      its(:latitudes?) { should be_false }
+      its(:latitudes?) { should be false }
 
-      its(:longitudes?) { should be_false }
+      its(:longitudes?) { should be false }
 
-      its(:gps_altitudes?) { should be_false }
+      its(:gps_altitudes?) { should be false }
 
     end
 
@@ -397,33 +397,33 @@ describe EagleTree::Log::Session do
 
       it { should have(8716).milliseconds }
 
-      its(:altitudes?) { should be_false }
+      its(:altitudes?) { should be false }
 
-      its(:airspeeds?) { should be_false }
+      its(:airspeeds?) { should be false }
 
-      its(:servo_currents?) { should be_false }
+      its(:servo_currents?) { should be false }
 
-      its(:throttles?) { should be_false }
+      its(:throttles?) { should be false }
 
-      its(:pack_voltages?) { should be_true }
+      its(:pack_voltages?) { should be true }
 
-      its(:amps?) { should be_true }
+      its(:amps?) { should be true }
 
-      its(:temps1?) { should be_true }
+      its(:temps1?) { should be true }
 
-      its(:temps2?) { should be_true }
+      its(:temps2?) { should be true }
 
-      its(:temps3?) { should be_false }
+      its(:temps3?) { should be false }
 
-      its(:rpms?) { should be_false }
+      its(:rpms?) { should be false }
 
-      its(:rpms2?) { should be_false }
+      its(:rpms2?) { should be false }
 
-      its(:latitudes?) { should be_false }
+      its(:latitudes?) { should be false }
 
-      its(:longitudes?) { should be_false }
+      its(:longitudes?) { should be false }
 
-      its(:gps_altitudes?) { should be_false }
+      its(:gps_altitudes?) { should be false }
 
     end
 
