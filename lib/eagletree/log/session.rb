@@ -15,12 +15,12 @@ module EagleTree
       # @return [Array] rows of raw data from session
       attr_reader :rows
 
-      def initialize number, range
+      def initialize(number, range)
         @number = number
         @range = range
       end
 
-      def rows= rows
+      def rows=(rows)
         @rows = rows
       end
 
@@ -266,14 +266,14 @@ module EagleTree
 
       private
 
-      def apply_default_file_options options
+      def apply_default_file_options(options)
         options = { :name => 'Eagle Tree GPS Path' }.merge(options)
         options = { :description => 'Session paths for GPS log data' }.merge(options)
         options = { :style_id => 'default-poly-style' }.merge(options)
         options
       end
 
-      def apply_default_placemark_options options
+      def apply_default_placemark_options(options)
         options = { :altitude_mode => 'absolute' }.merge(options)
         options = { :extrude => true }.merge(options)
         options = { :name => "Session (#{duration.round(1)}s)" }.merge(options)
@@ -282,19 +282,19 @@ module EagleTree
         options
       end
 
-      def nonzero? array
+      def nonzero?(array)
         !array.all?(&:zero?)
       end
 
-      def int_fields name
+      def int_fields(name)
         fields(name).map(&:to_i)
       end
 
-      def float_fields name
+      def float_fields(name)
         fields(name).map(&:to_f)
       end
 
-      def fields name
+      def fields(name)
         @rows.each_with_object(name).map(&:[])
       end
 

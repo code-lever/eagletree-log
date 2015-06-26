@@ -23,11 +23,11 @@ module EagleTree
       #
       # @param uri URI to file to read
       # @return [EagleTree::Log::File] loaded file if the file is an Eagle Tree log file, nil otherwise
-      def self.eagle_tree? uri
+      def self.eagle_tree?(uri)
         File.new(uri) rescue nil
       end
 
-      def initialize uri
+      def initialize(uri)
         @sessions = []
 
         open(uri, 'r') do |file|
@@ -139,7 +139,7 @@ module EagleTree
 
       private
 
-      def apply_default_file_options options
+      def apply_default_file_options(options)
         options = { :name => 'Eagle Tree GPS Path' }.merge(options)
         options = { :description => 'Session paths for GPS log data' }.merge(options)
         options
