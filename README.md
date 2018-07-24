@@ -1,4 +1,4 @@
-# EagleTree::Log [![Build Status](https://travis-ci.org/code-lever/eagletree-log.png)](https://travis-ci.org/code-lever/eagletree-log) [![Dependency Status](https://gemnasium.com/code-lever/eagletree-log.png)](https://gemnasium.com/code-lever/eagletree-log) [![Code Climate](https://codeclimate.com/github/code-lever/eagletree-log.png)](https://codeclimate.com/github/code-lever/eagletree-log)
+# EagleTree::Log [![Build Status](https://travis-ci.org/code-lever/eagletree-log.png)](https://travis-ci.org/code-lever/eagletree-log) [![Code Climate](https://codeclimate.com/github/code-lever/eagletree-log.png)](https://codeclimate.com/github/code-lever/eagletree-log)
 
 TODO: Write a gem description
 
